@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.active{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+		.textDange{
+			width: 200px;
+			height: 200px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div v-bind:class = "{active:isActive, textDange:hasError}"></div>
+		<button v-on:click="doThis" >真相一直在黑夜中</button>
+	</div>
+</body>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				isActive:false,
+				hasError:true,
+				index :0
+			},
+			methods:{
+				doThis:function(){
+						this.isActive = true,
+						this.hasError = false
+				}
+			}
+		})
+
+
+	</script>
+
+
+</html>

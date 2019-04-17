@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        p{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+    <p>{{fn}}</p>
+    <input type="text" v-model="msg">
+    {{email}}
+    </div>
+    <script>
+        let vue =  new Vue({
+             el:"#app",
+             data:{
+                 msg:"",
+                 hello:"hello Vue",
+                 url:"<a href='111'>111111</a>"
+             },
+             computed:{
+                  fn:{
+                      get(){
+                         return this.hello
+                      },
+                      set(val){
+                         this.hello = this.hello + val;
+                      }
+                  },
+                  email:function(){
+                    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+                    // console.log(val)
+                    if(!reg.test(this.msg)){
+                        return '的邮箱格式不正确'
+                     }else{
+                        return '您的邮箱格式正确'
+                     }
+                     
+                  }
+             },
+             watch:{
+                msg(val){
+                   this.msg = val;
+                   this.add(this.msg);
+                }
+             },
+             methods:{
+                 add(val){
+                    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+                    // console.log(val)
+                    if(!reg.test(val)){
+                         console.log('您的邮箱格式不正确')
+                     }else{
+                        console.log('您的邮箱格式正确')
+                     }   
+                 }
+             },
+             created(){
+                // console.log(this.fn='123')
+             }
+         })
+         
+    </script>
+</body>
+</html>

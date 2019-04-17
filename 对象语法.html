@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-bind:style = "{width:activeWidth + 'px', height:activeHeight + 'px', background:activeColor}"></div>
+	</div>
+	<div id="arr">
+		<div v-bind:style="styleObject"></div>
+	</div>
+	<div id="container">
+		<div v-bind:style = {border:['a','b','c']}></div>
+	</div>
+</body>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				activeWidth:500,
+				activeHeight:500,
+				activeColor:"green"
+			}
+		})
+
+		new Vue({
+			el:"#arr",
+			data:{
+				styleObject:{
+					width:"500px",
+					height:"500px",
+					background : "red"
+					
+				}
+			}
+		})
+
+		
+	</script>
+</html>

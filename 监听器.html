@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.container{
+			width: 300px;
+			height: 260px;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			align-items:center;
+			justify-content: space-around;
+		}
+		.item{
+			position: relative;
+			width: 100%;
+			display: flex;
+			justify-content:space-around;
+		}
+		label{
+			width: 100px;
+			height: 20px;
+			font-size: 0.8em;
+			font-weight: 700;
+			color: #999;
+			text-align:center;
+		}
+		input{
+			border: 1px solid #ddd;
+			color: #999;
+		}
+		button{
+			width: 80px;
+			border: none;
+			background: #eeee;
+			border-radius: 10px
+		}
+		.icon{
+			position: absolute;
+			top: 0;
+			right:-22px;
+			width: 20px;
+			height: 20px;
+		}
+		img{
+			position: absolute;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container" id="app">
+		<div class="item" >
+		
+			<label for="">用户名</label>
+			<input type="text" v-model="messageone">
+			<div class="icon">
+				<img src="for.png"	v-if="imgone" v-show="showone">
+				<img src="wrong.png"  v-else v-show="showone"> 
+				{{user}}
+			</div>
+		</div>
+		<div class="item">
+			<label for="">密码</label>
+			<input type="text" v-model="messagetwo" >
+			<div class="icon">
+				<img src="for.png" v-if="imgtwo" v-show="showtwo">
+				<img src="wrong.png" v-else v-show="showtwo">
+				{{pass}}
+			</div>
+		</div>
+		<div class="item">
+			<label for="">邮箱</label>
+			<input type="text" v-model="messagethree">
+			<div class="icon">
+				<img src="for.png" v-if="imgthree" v-show="showthree">
+				<img src="wrong.png" v-else v-show="showthree">
+				{{email}}
+			</div>
+
+		</div>
+		<div class="item">
+			<button type="button" :disabled ="disabled">提交</button>
+	    </div>
+	 
+	</div>
+
+</body>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				disabled:true,
+				messageone:"",
+				messagetwo:"",
+				messagethree:"",
+				imgone:true,
+				imgtwo:true,
+				imgthree:true,
+				showone:true,
+				showtwo:true,
+				showthree:true
+			},
+			computed:{
+				user:function(){
+					if (this.messageone == "") {
+						this.showone = false
+						this.disabled = true
+					}else {
+						let yi = this.messageone
+						var Usernameregex = new RegExp("^[a-zA-Z0-9_-]{4,16}$")
+							if (Usernameregex.test(yi) == true) {
+								this.showone = true
+								this.imgone = true
+								if (this.imgthree == true && this.imgtwo == true){
+									
+								}else {
+									this.disabled = true
+								}
+							}else {
+								this.showone = true
+								this.imgone = false
+								this.disabled = true
+						}	
+					}
+				},
+				pass:function(){
+					if (this.messagetwo == "") {
+						this.showtwo = false
+						this.disabled = true
+					}else {
+						let er = this.messagetwo
+						console.log(er)
+						let Passwordregex = new RegExp("^(?![0-9]+$)(?![a-zA-Z]+$)(?!([^(0-9a-zA-Z)]|[\\(\\)])+$)([^(0-9a-zA-Z)]|[\\(\\)]|[a-zA-Z]|[0-9]){6,20}$");
+						if (Passwordregex.test(er) == true) {
+								this.showtwo = true
+								this.imgtwo = true
+								if (this.imgshow == false && this.imgthree == false){
+									this.disabled = false
+								}else {
+									this.disabled = true
+								}
+						}else {
+								this.showtwo = true
+								this.imgtwo = false
+								this.disabled = true
+						}	
+						
+					}
+				},
+				email:function(){
+					if (this.messagethree == "") {
+						this.showthree = false
+						this.disabled = true
+					}else {
+						let er = this.messagethree
+						console.log(er)
+						var Emailregex = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+						if (Emailregex.test(er) == true) {
+								this.showthree = true
+								this.imgthree = true
+								if (this.showone == true && this.showtwo == true) {
+										console.log('a')
+										this.disabled = false
+										console.log('a')
+								}else{
+									this.disabled = true
+									 console.log('b')
+								}
+
+						}else {
+								this.showthree = true
+								this.imgthree = false
+								this.disabled = true
+						}	
+						
+					}
+
+
+
+
+				}
+			
+			},
+			methods:{
+				
+			}
+		})	
+	
+
+// 这里结束
+	
+	</script>
+</html>

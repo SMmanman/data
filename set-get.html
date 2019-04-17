@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="fullName">
+		
+		<div>{{fullName}}</div>
+		<div>{{firstName}}</div>
+		<div>{{lastName}}</div>
+		<div :title="ad"></div>
+	
+	</div>
+</body>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				firstName:"",
+				lastName:"",
+				ad:"ads"
+			},
+			computed: {
+  				fullName: {
+    // getter
+    				get: function (val) {
+      					return this.firstName + ' ' + this.lastName
+      					// console.log(val)
+    				},
+    // setter
+    				set: function (newValue) {
+     				 	var names = newValue.split(' ')
+     				 	console.log(names + "我是names")
+      					this.firstName = names[0]
+      					console.log(this.firstName + "我是first")
+      					this.lastName = names[names.length - 1]
+      					console.log(this.lastName + "我是last")
+    				}
+  				}
+			}
+
+		})
+	</script>
+</html>

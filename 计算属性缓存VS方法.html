@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{reversemessage()}}</p>
+		<!-- 第一张是缓存快只要你的message值不变就会不运行下面的代码 -->
+		<p>{{message.split("").reverse().join("")}}</p>
+		<!-- 第二个每次都要运行暂用浏览器内存 -->
+	</div>
+</body>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				message:"这就是在妙木山修炼的成果"
+			},
+			methods:{
+				reversemessage(){
+					return this.message.split("").reverse().join("")
+				}
+			}
+		})
+
+	</script>
+</html>

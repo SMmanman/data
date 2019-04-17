@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		.container{
+			width: 800px;
+			height: 400px;
+			margin: 0 auto;
+			
+		}
+		.list{as
+			list-style-type: none;
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		.item{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+		.item:nth-child(1){
+			background: red;
+		}
+		.item:nth-child(2){
+			background: orange;
+		}
+		.item:nth-child(3){
+			background: yellow;
+		}
+		.item:nth-child(4){
+			background: green;
+		}
+		.item:nth-child(5){
+			background: cyan;
+		}
+
+	</style>
+</head>
+<body>
+	<!-- 	<div id="app">
+			<myhead/>	
+		</div>
+
+		<div id="components-demo">
+  			<rotation-chart></rotation-chart>
+		</div>
+		<div id="aa">
+			<aaa></aaa>
+		</div>
+		<div class="abc">
+			<button-counter></button-counter>
+		</div> -->
+</body>
+
+<script>
+
+
+
+	// Vue.component('Rotation-chart', {
+	// 	data:function(){
+	// 		return{
+	// 			count:0
+	// 		}
+	// 	},
+	// 	template:`
+	// 	<button v-on:click="count++">You clicked me {{ count }}</button>
+	// 	`
+	// })
+
+	// Vue.component('rotation-chart', {
+	// 	data:function(){
+	// 		return{
+	// 			count:0,
+	// 		}
+	// 	},
+	// 	template:`
+	// 		<div class="container">
+	// 				<ul class="list">
+	// 					<li class="item">1</li>
+	// 					<li class="item">2</li>
+	// 					<li class="item">3</li>
+	// 					<li class="item">4</li>
+	// 					<li class="item">5</li>
+	// 				</ul>
+	// 		</div>
+	// 	`
+	// })
+		
+
+	
+
+	// new Vue({ 
+	// 	el: '#components-demo'
+	// })
+	
+// Vue.component('button-counter', {
+//   data: function () {
+//   	  return {
+//     	  count: 0
+//     	}
+//   	},
+//   		template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+// })
+
+	// new Vue({
+	// 	el:".abc"
+	// })
+
+
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- <script>
+		let Profile = Vue.extend({
+			template:`
+				<div class="container">
+					<ul class="list">
+						<li class="item">1</li>
+						<li class="item">2</li>
+						<li class="item">3</li>
+						<li class="item">4</li>
+						<li class="item">5</li>
+					</ul>
+				</div>
+			`,
+			components:{
+				doThis(){
+					let item =document.getElementsByClassName("item");
+					console.log(item);
+				}
+			}
+		})
+
+		Vue.component('myhead',Profile);
+
+		new Vue({
+			el:"#app",
+		})
+	</script>	
+ -->
+<!-- 第一种方法结束 -->
+
+
+
+
+</html>

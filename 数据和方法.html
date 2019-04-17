@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>
+	</title>
+	<link rel="stylesheet" href="">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	 
+	<!-- <div id="app">
+		<p>{{foo}}</p>
+		<button v-on:click="foo = 'baz'" >changae</button>
+	</div> -->
+</body>
+	<script>
+		// var obj = {
+		// 	foo : "bar"
+		// }
+		
+		// // Object.freeze(obj);
+
+		// new Vue({
+		// 	el:"#app",
+		// 	data:obj
+		// })
+		// 
+		// 
+		// 
+			var data = { a: 1 }
+		var vm = new Vue({
+		  el: '#example',
+		  data: data
+		})
+
+		vm.$data === data // => true
+		vm.$el === document.getElementById('example') // => true
+
+		// $watch 是一个实例方法
+		vm.$watch('a', function (newValue, oldValue) {
+		 
+		})
+	</script>
+</html>

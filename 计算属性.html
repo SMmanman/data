@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="example">
+		<h1>{{message}}</h1>
+		<h1>{{reversemessage}}</h1>
+		<h1>{{reversemessage}}</h1>
+		<h1>{{reversemessage}}</h1>
+		<h1>{{reversemessage}}</h1>
+		<h1>{{reversemessage}}</h1>
+		<h1>{{reversemessage}}</h1>
+	</div>
+	
+</body>
+	<script>
+		new Vue({
+			el:"#example",
+			data:{
+				message:"有话就说这就是我的忍道",
+				messages:"我要按自己的路走下去"
+			},
+			computed:{
+				reversemessage(){
+					return this.message.split("").reverse().join("")
+				}
+			}
+		})
+
+		//在computed中一定要有retur
+	</script>
+</html>

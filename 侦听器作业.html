@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.container{
+			width: 300px;
+			height: 260px;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			align-items:center;
+			justify-content: space-around;
+		}
+		.item{
+			position: relative;
+			width: 100%;
+			display: flex;
+			justify-content:space-around;
+		}
+		label{
+			width: 100px;
+			height: 20px;
+			font-size: 0.8em;
+			font-weight: 700;
+			color: #999;
+			text-align:center;
+		}
+		input{
+			border: 1px solid #ddd;
+			color: #999;
+		}
+		button{
+			width: 80px;
+			border: none;
+			background: #eeee;
+			border-radius: 10px
+		}
+		.icon{
+			position: absolute;
+			top: 0;
+			right:-22px;
+			width: 20px;
+			height: 20px;
+		}
+		img{
+			position: absolute;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container" id="app">
+		<div class="item" >
+			<label for="">用户名</label>
+			<input type="text" v-model="user">
+			<div class="icon">
+				<img src="for.png" v-if="one" v-show="a" :abc=1>
+				<img src="wrong.png" v-else   v-show="b" :abc=1>
+			</div>
+		</div>
+		<div class="item">
+			<label for="">密码</label>
+			<input type="text" v-model="pass">
+			<div class="icon">
+				<img src="for.png" v-if="two" v-show = "c" :abc=1>
+				<img src="wrong.png" v-else   v-show = "d" :abc=1>
+			</div>
+		</div>
+		<div class="item">
+			<label for="">邮箱</label>
+			<input type="text" v-model="email">
+			<div class="icon">
+				<img src="for.png" v-if="three"  v-show = "e" :abc=1>
+				<img src="wrong.png" v-else  v-show = "f"  :abc=1>
+			</div>
+		</div>
+		<div class="item">
+			<button type="button" v-bind:disabled ="disabled">提交</button>
+	    </div>
+	  
+	</div>
+</body>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				user:"",
+				pass:"",
+				email:"",
+				disabled:true,
+				abc:"",
+				def:"",
+				ghi:"",
+				one :false,
+				two:false,
+				three:false,
+				a:false,
+				b:false,
+				c:false,
+				d:false,
+				e:false,
+				f:false
+			
+			},
+			watch:{
+				user(val){
+
+					if (!val == "") {
+						this.b = true
+						this.a = true
+						this.user = val,
+						this.validation(this.user)
+					
+					}else {
+						this.a = false
+						this.b = false
+					}
+					
+				},
+				pass(val){
+					if (!val == "") {
+						this.c = true
+						this.d = true
+						this.pass = val,
+						this.Passwordauthentication(this.pass)
+						
+					}else {
+						this.c = false
+						this.d = false	
+					}
+				},
+				email(val){
+					if (!val == "") {
+						this.e = true
+						this.f = true
+						this.email = val
+						this.Gameverificationcode(this.email)
+
+					}else {
+						this.e = false
+						this.f = false
+					}
+				},
+				disabled(val){
+					console.log(val)
+					if (val == 5) {
+						this.disabled = false
+					}
+				
+				}
+
+			},
+
+			
+			methods:{
+				validation:function(val){
+					var Usernameregex = new RegExp("^[a-zA-Z0-9_-]{4,16}$");
+					if (!Usernameregex.test(val)) {
+							this.one = false
+							this.disabled = 2
+					}else {
+							this.one = true
+							if (!this.three == "" && !this.two == "") {
+							if (this.two == true && this.three == true) {
+									this.disabled = 5
+							}
+						}else {
+							this.disabled = 3	
+						}
+					}
+				},
+				Passwordauthentication:function(pa){
+					let Passwordregex = new RegExp("^(?![0-9]+$)(?![a-zA-Z]+$)(?!([^(0-9a-zA-Z)]|[\\(\\)])+$)([^(0-9a-zA-Z)]|[\\(\\)]|[a-zA-Z]|[0-9]){6,20}$");
+					if (!Passwordregex.test(pa)) {
+							this.two = false
+							this.disabled = 2
+					}else {
+							this.two = true
+							if (!this.one == "" && !this.three == "") {
+							if (this.one == true && this.three == true) {
+									this.disabled = 5
+							}
+						}else {
+							this.disabled = 3	
+						}		
+					}
+				},
+				Gameverificationcode:function(em){
+					var Emailregex = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+					if (!Emailregex.test(em)) {
+						this.three = false
+						this.disabled = 2
+					}else {
+						this.three = true
+						if (!this.one == "" && !this.two == "") {
+							if (this.one == true && this.two == true) {
+									this.disabled = 5
+							}
+						}else {
+							this.disabled = 3	
+						}
+					}
+				}
+				
+		}
+	})
+	
+
+
+// 这里结束
+	
+	</script>
+</html>

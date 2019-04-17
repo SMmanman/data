@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ol>
+				<todo-item
+				 v-for="item in groceryList"
+				 v-bind:todo="item"
+				 v-bind:key="item.id">
+				<todo-item>
+
+		</ol>	
+	</div>
+</body>
+	<script>
+			Vue.component('todo-item',{
+				props:['todo'],
+				// 道具
+				template:`<li>{{ todo.text }}</li>`
+			})
+
+			let app = new Vue({
+				el:"#app",
+				data:{
+					groceryList:[
+						{id : 0, text:'Vegetables'},
+						{id : 1, text:'Chessse'},
+						{id : 2, text:'whatever else humans are supposed to eat'}
+
+					]
+				}
+			})
+	</script>
+</html>
